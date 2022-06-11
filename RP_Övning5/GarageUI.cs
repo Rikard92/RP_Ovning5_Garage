@@ -13,37 +13,100 @@ namespace RP_Övning5
         public void Run()
         {
             GH = new GarageHandler();
+            string input = "";
             while (true)
             {
-                Console.WriteLine("Pick a Garage you wish to visit: Type number or name");
-                Console.WriteLine("To add a new Garage type the word 'Register'");
+                //Visa all garage som finns
                 DisplayGarages();
 
-                string input = Console.ReadLine();
+                input = Console.ReadLine();
 
                 if (input.Contains("Register"))
                 {
                     RegisterGarage();
                 }
+                else if (input.Contains("Quit") || input.Contains("quit")|| input.Contains("q"))
+                {
+                    break;
+                }
                 else
                 {
                     var g = GetGarage(input);
+                    string GarageInput = "";
                     if (g != null)
                     {
-                        Console.Clear();
+                        while (true)
+                        {
+                            Console.Clear();
+                            //Visa all fordon som fins i garaget
+                            DisplayVehiclesInGarage(g);
+                            GarageInput = Console.ReadLine();
+                            if (GarageInput.Contains("Exit"))
+                            {
+                                break;
+                            }
+                            else if(GarageInput.Contains("Add"))
+                            {
+                                ParkVehicle(g);
 
-                        DisplayVehiclesInGarage(g);
+
+
+                            }
+                            else if(GarageInput.Contains("Search"))
+                            {
+                                DisplayVehicleInformation(g, GarageInput);
+
+
+                            }
+                        }
+                        
+                        
                     }
                     else
                     {
                         Console.Clear();
-                        Console.WriteLine("Try again.");
+                        Console.WriteLine("Try again either the word 'Resister', a number form the lsit or a name of a Garage.");
                     }
                 }
             }
         }
+
+        private void ParkVehicle(Garage<Vehicle> g)
+        {
+            Console.WriteLine("You area able to add a vehicle of the follwing vehicle types in this garage.");
+            String VehicleDesc = Console.ReadLine();
+            if(VehicleDesc.Contains("Airplane") || VehicleDesc.Contains("airplane"))
+            {
+
+            }else if (VehicleDesc.Contains("Boat") || VehicleDesc.Contains("boat"))
+            {
+
+            }
+            else if (VehicleDesc.Contains("Bus") || VehicleDesc.Contains("bus"))
+            {
+
+            }
+            else if (VehicleDesc.Contains("Car") || VehicleDesc.Contains("car"))
+            {
+
+            }
+            else if (VehicleDesc.Contains("Motorcycle") || VehicleDesc.Contains("motorcycle"))
+            {
+
+            }
+            else
+            {
+
+            }
+
+            Vehicle vehicle = new Vehicle("ABC");
+            GH.AddVehicle(g, vehicle);
+        }
+
         public void DisplayGarages()
         {
+            Console.WriteLine("Pick a Garage you wish to visit: Type number or name");
+            Console.WriteLine("To add a new Garage type the word 'Register'");
             var reg = GH.getGarageRegistry();
             int i = 0;
             foreach (Garage<Vehicle> garage in reg)
@@ -54,20 +117,31 @@ namespace RP_Övning5
         }
         public void DisplayVehiclesInGarage(Garage<Vehicle> gar)
         {
-            for(int i = 1; i <= gar.Length(); i++)
+            Console.WriteLine("To add a vehicle to the garage, enter the word 'Add', to exit the garage type 'Exit'.");
+            Console.WriteLine("To pick a specifick vehicle from the garage, enter the word 'Search'.");
+            for (int i = 0; i < gar.Length(); i++)
             {
 
-                if (gar.ElementAt(i) != null)
+                if (gar.ElementAtOrDefault(i) != null)
                 {
-                    Console.WriteLine($"[{gar.ElementAt(i).Name} {gar.ElementAt(i).RegisterID} {gar.ElementAt(i).GetType}]");
+                    Console.WriteLine($"{i+1}:[{gar.ElementAt(i).Name} ID:{gar.ElementAt(i).RegisterID} Type:{gar.ElementAt(i).GetType}]");
                 }
                 else
                 {
-                    Console.WriteLine($"[Empty slot]");
+                    Console.WriteLine($"{i+1}:[Empty slot]");
                 }
 
             }
-        }                
+
+        }
+
+        public void DisplayVehicleInformation( Garage<Vehicle> G, string Input)
+        {
+            Console.Clear();
+
+            Vehicle vN = GH.FindVehicleByName(G, Input);
+            Vehicle vR = GH.FindVehicleByRegister(G, Input);
+        }
         public Garage<Vehicle> GetGarage(string input)
         {
             Garage<Vehicle> theGar = null;
@@ -78,7 +152,7 @@ namespace RP_Övning5
             }
             else
             {
-                theGar = (Garage<Vehicle>?)GH.getGarageRegistry().Where(g => g.GarageName.Contains(input));
+                theGar = GH.getGarageRegistry().Find(g => g.GarageName.Contains(input));
             }
             return theGar;
         }

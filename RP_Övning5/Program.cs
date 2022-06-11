@@ -10,7 +10,7 @@ namespace RP_Övning5
             GarageUI ui = new GarageUI();
             ui.Run();
 
-            Console.ReadLine();
+
         }
     }
 }

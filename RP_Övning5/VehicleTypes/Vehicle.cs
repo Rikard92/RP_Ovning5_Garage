@@ -9,78 +9,29 @@ namespace RP_Övning5
 {
     internal class Vehicle : IVehicle
     {
-        public Vehicle(string reg, string name, int NumEngines, float CylVolume, string Fule, int NumfSeats, int Leg, int Wei)
+        public Vehicle(string reg)
         {
             RegisterID = reg;
-            Name = name;
-            NumberOfEngines = NumEngines;
-            CyliderVolume = CylVolume;
-            Fuletype = Fule;
-            NumberOfSeats = NumfSeats;
-            NumberOfWheels = 0;
-            Legnth = Leg;
-            Weight = Wei;
-        }
-
-        public Vehicle(string reg, string name, int NumEngines, float CylVolume, string Fule, int NumfSeats, int NumOfWheels, int Leg, int Wei)
-        {
-            RegisterID = reg;
-            Name = name;
-            NumberOfEngines = NumEngines;
-            CyliderVolume = CylVolume;
-            Fuletype = Fule;
-            NumberOfSeats = NumfSeats;
-            NumberOfWheels = NumOfWheels;
-            Legnth = Leg;
-            Weight = Wei;
-        }
-        public Vehicle(string reg, string name, int NumfSeats, int NumOfWheels, int Leg, int Wei)
-        {
-            RegisterID = reg;
-            Name = name;
-            NumberOfEngines = 0;
-            CyliderVolume = 0;
-            Fuletype = "None";
-            NumberOfWheels = NumOfWheels;
-            NumberOfSeats = NumfSeats;
-            Legnth = Leg;
-            Weight = Wei;
-        }
-        public Vehicle(string reg, string name)
-        {
-            RegisterID = reg;
-            Name = name;
-            NumberOfEngines = 0;
-            CyliderVolume = 0;
-            Fuletype = "None";
-            NumberOfWheels = 0;
-            NumberOfSeats = 1;
-            Legnth = 0;
-            Weight = 0;
-        }
-        public Vehicle(string name)
-        {
-            RegisterID = "";
-            Name = name;
-            NumberOfEngines = 0;
-            CyliderVolume = 0;
-            Fuletype = "None";
-            NumberOfWheels = 0;
-            NumberOfSeats = 1;
-            Legnth = 0;
-            Weight = 0;
-        }
-        public Vehicle(int NumOfWheels, int Leg, int Wei)
-        {
-            RegisterID = "";
             Name = "";
             NumberOfEngines = 0;
             CyliderVolume = 0;
             Fuletype = "None";
-            NumberOfWheels = NumOfWheels;
+            NumberOfWheels = 0;
             NumberOfSeats = 1;
-            Legnth = Leg;
-            Weight = Wei;
+            Legnth = 1;
+            Weight = 1;
+        }
+        public Vehicle(string reg, string nam)
+        {
+            RegisterID = reg;
+            Name = nam;
+            NumberOfEngines = 0;
+            CyliderVolume = 0;
+            Fuletype = "None";
+            NumberOfWheels = 0;
+            NumberOfSeats = 1;
+            Legnth = 1;
+            Weight = 1;
         }
 
         public string RegisterID { get; set; }

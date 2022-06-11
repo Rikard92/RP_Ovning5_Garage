@@ -8,5 +8,7 @@ namespace RP_Övning5.VehicleTypes
 {
     internal class Bus
     {
+
+        public string BusModel { get; set; }
     }
 }
