@@ -73,12 +73,12 @@ namespace RP_Övning5
 
         private void ParkVehicle(Garage<Vehicle> g)
         {
-            Console.WriteLine("You area able to add a vehicle of the follwing vehicle types in this garage.");
+            Console.WriteLine("You are able to add a vehicle of the follwing vehicle types in this garage.");
             String VehicleDesc = Console.ReadLine();
             if(VehicleDesc.Contains("Airplane") || VehicleDesc.Contains("airplane"))
             {
-
-            }else if (VehicleDesc.Contains("Boat") || VehicleDesc.Contains("boat"))
+            }
+            else if (VehicleDesc.Contains("Boat") || VehicleDesc.Contains("boat"))
             {
 
             }
@@ -96,11 +96,29 @@ namespace RP_Övning5
             }
             else
             {
+                Console.Write("Registerd ID:");
+                string RegisterID = Console.ReadLine();
+                Console.Write("Name:");
+                string VehicleName = Console.ReadLine();
+                Console.Write("Number Of Engines:");
+                int EnginesNum = Int32.Parse(Console.ReadLine());
+                Console.Write("Fuletype:");
+                string Fuletype = Console.ReadLine();
+                Console.Write("Cylider Volume:");
+                float CyliderVolume = float.Parse(Console.ReadLine());
+                Console.Write("Number Of Wheels:");
+                int NumberOfWheels = Int32.Parse(Console.ReadLine());
+                Console.Write("Number Of Seats:");
+                int NumberOfSeats = Int32.Parse(Console.ReadLine());
+                Console.Write("Vehicle Legnth:");
+                int Legnth = Int32.Parse(Console.ReadLine());
+                Console.Write("Vehicle Weight:");
+                int Weight = Int32.Parse( Console.ReadLine());
 
+                Vehicle vehicle = new Vehicle("ABC");
+                GH.AddVehicle(g, vehicle);
             }
 
-            Vehicle vehicle = new Vehicle("ABC");
-            GH.AddVehicle(g, vehicle);
         }
 
         public void DisplayGarages()
