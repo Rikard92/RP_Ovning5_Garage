@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RP_Övning5
 {
-    internal class GarageHandler
+    class GarageHandler
     {
         private List<Garage<Vehicle>> GarageRegistry;
 

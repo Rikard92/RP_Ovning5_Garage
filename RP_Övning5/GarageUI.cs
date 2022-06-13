@@ -55,12 +55,22 @@ namespace RP_Övning5
                             }
                             else if(GarageInput.Contains("search"))
                             {
-                                Console.WriteLine("Type the Name, vehicle ID or the feature of the vehicle you are looking for.");
+                                while (true)
+                                {
 
-                                GarageInput = Console.ReadLine().ToLower();
-                                DisplayVehicleInformation(g, GarageInput);
+                                    Console.WriteLine("Type the Name, vehicle ID or the feature of the vehicle you are looking for.");
 
+                                    GarageInput = Console.ReadLine().ToLower();
+                                    DisplayVehicleInformation(g, GarageInput);
 
+                                    Console.WriteLine("Type the 'Back' if you want to get out of the search.");
+
+                                    GarageInput = Console.ReadLine().ToLower();
+                                    if (GarageInput.Contains("back"))
+                                    {
+                                        break;
+                                    }
+                                }
                             }
                         }
                         
