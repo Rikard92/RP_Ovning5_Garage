@@ -17,7 +17,6 @@ namespace RP_Övning5.Interfaces
         public int NumberOfWheels { get; set; }
         public int Legnth { get; set; }
         public int Weight { get; set; }
-
-
+        public string PrintVehicle();
     }
 }

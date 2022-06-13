@@ -192,5 +192,44 @@ namespace RP_Övning5
                 }
             }
         }
+
+        public virtual string PrintVehicle()
+        {
+            string returnString = $"ID:{RegisterID}";
+            if (Name!="")
+            {
+                returnString += $" Name:{Name}";
+            }
+            if (NumberOfEngines > 0)
+            {
+                returnString += $" Number of Engines{NumberOfEngines}";
+            }
+            if (CyliderVolume > 0)
+            {
+                returnString += $" Cylider Volume:{CyliderVolume}";
+            }
+            if (Name != "" || Name != " "|| Name != null)
+            {
+                returnString += $" Fule:{Fuletype}";
+            }
+            if (NumberOfWheels > 0)
+            {
+                returnString += $" Number Of Wheels:{NumberOfWheels}";
+            }
+            if (NumberOfSeats > 0)
+            {
+                returnString += $" Number Of Seats:{NumberOfSeats}";
+            }
+            if (NumberOfEngines > 0)
+            {
+                returnString += $" Legnth:{Legnth}";
+            }
+            if (NumberOfEngines > 0)
+            {
+                returnString += $" Weight:{Weight}";
+            }
+            return returnString;
+            
+        }
     }
 }

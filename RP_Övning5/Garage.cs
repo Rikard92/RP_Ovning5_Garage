@@ -14,10 +14,12 @@ namespace RP_Övning5
 
         public string GarageName;
         private T[] vehicles;
+        private int amountStored;
 
         public Garage(int Vtotal)
         {
             vehicles = new T[Vtotal];
+            amountStored = 0;
         }
 
         public void Add(T var){
@@ -25,6 +27,7 @@ namespace RP_Övning5
             { 
                 if(vehicles[i] == null)
                 {
+                    amountStored++;
                     vehicles[i] = var;
                     break;
                 }
@@ -34,6 +37,7 @@ namespace RP_Övning5
         public void Remove(T var)
         {
             vehicles = vehicles.Where(v => v.RegisterID != var.RegisterID).ToArray();
+            amountStored--;
         }
         
         public IEnumerator<T> GetEnumerator()
@@ -54,6 +58,10 @@ namespace RP_Övning5
         public int Length()
         {
             return vehicles.Length;
+        }
+        public int StoredAmount()
+        {
+            return amountStored;
         }
     }
 }

@@ -42,7 +42,18 @@ namespace RP_Övning5
 
         public string AddVehicle(Garage<Vehicle> garage, Vehicle vehicle)
         {
-            throw new NotImplementedException();
+            string reponse;
+            if (garage.Length() == garage.StoredAmount())
+            {
+                reponse = $"The garage {garage.GarageName} have no more space.";
+            }
+            else
+            {
+                garage.Add(vehicle);
+                reponse = $"The vehicle {vehicle.RegisterID+" "}{vehicle.Name} is stored in {garage.GarageName}.";
+            }
+
+            return reponse;
         }
 
         public Vehicle FindVehicleByName(Garage<Vehicle> garage, string name)
@@ -59,10 +70,11 @@ namespace RP_Övning5
             return query.First();
         }
 
-        public List<Vehicle> FindVehiclesByfeatures(Garage<Vehicle> garage, Vehicle example)
+        public List<Vehicle> FindVehiclesByfeatures(Garage<Vehicle> garage, string example)
         {
-            List<Vehicle> query = garage.Where(v => v.NumberOfSeats == example.NumberOfSeats || v.NumberOfWheels == example.NumberOfWheels 
-            || v.NumberOfEngines == example.NumberOfEngines || v.Weight == example.Weight || v.Legnth == example.Legnth || v.CyliderVolume == example.CyliderVolume).ToList();
+            List<Vehicle> query = garage.Where(v => v.NumberOfSeats == Int32.Parse(example) || v.NumberOfWheels == Int32.Parse(example)
+            || v.NumberOfEngines == Int32.Parse(example) || v.Weight == Int32.Parse(example) || v.Legnth == Int32.Parse(example) 
+            || v.CyliderVolume == Int32.Parse(example)).ToList();
 
             return query;
         }
